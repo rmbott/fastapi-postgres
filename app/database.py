@@ -4,11 +4,14 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 import os
 
-load_dotenv('..') # my .env file is in parent folder
-user_name = os.environ.get('USER')
+load_dotenv('.postgres.env') # my .env file is in parent folder
+username = os.environ.get('NUSER')
 password = os.environ.get('PASSWORD')
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{user_name}:{password}@postgresserver/pcdb"
+print(f'{username}')
+print(f'{password}')
+
+SQLALCHEMY_DATABASE_URL = f"postgresql://{username}:{password}@localhost/pcdb"
 #SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 
 engine = create_engine(
